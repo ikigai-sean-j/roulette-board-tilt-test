@@ -28840,7 +28840,7 @@ function App() {
         className: "board-container",
         variants: gridBoardVariants,
         animate: boardState,
-        children: Array.from({ length: 20 }).map((_, index) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "board-grid", children: boardFormat === "webp" ? /* @__PURE__ */ jsxRuntimeExports.jsx(
+        children: Array.from({ length: 50 }).map((_, index) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "board-grid", children: boardFormat === "webp" ? /* @__PURE__ */ jsxRuntimeExports.jsx(
           "img",
           {
             src: boardGridWebp,
