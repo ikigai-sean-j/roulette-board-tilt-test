@@ -13,7 +13,30 @@
   transform: translateX(-50%);
   z-index: 10;
   display: flex;
+  justify-content: center;
   gap: 12px;
+  min-width: 80%;
+}
+
+.controls select,
+.controls button {
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.controls select:hover,
+.controls button:hover {
+  border-color: #888;
+}
+
+.controls select:focus,
+.controls button:focus {
+  outline: 2px solid #4a90e2;
+  outline-offset: 2px;
 }
 
 .board-container {

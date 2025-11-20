@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import MobileBoardGridSVG from "./MobileBoardGridSVG";
+import MobileBoardGridSVGFeCleaned from "./MobileBoardGridSVG-fe-cleaned";
 import boardGridWebp from "./assets/mobile-board-grid.webp";
 import "./App.css";
 
@@ -31,11 +32,13 @@ const gridBoardVariants = {
 };
 
 function App() {
-  const [boardFormat, setBoardFormat] = useState<"webp" | "svg">("webp");
+  const [boardFormat, setBoardFormat] = useState<"webp" | "svg" | "cleanedSvg">(
+    "webp"
+  );
   const [boardState, setBoardState] = useState<"flat" | "slope">("flat");
 
-  const toggleBoardFormat = () => {
-    setBoardFormat((prev) => (prev === "webp" ? "svg" : "webp"));
+  const handleFormatChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setBoardFormat(e.target.value as "webp" | "svg" | "cleanedSvg");
   };
 
   const toggleBoardState = () => {
@@ -45,9 +48,11 @@ function App() {
   return (
     <div className="app-container">
       <div className="controls">
-        <button onClick={toggleBoardFormat}>
-          Switch to {boardFormat === "webp" ? "SVG" : "WebP"}
-        </button>
+        <select value={boardFormat} onChange={handleFormatChange}>
+          <option value="webp">WebP</option>
+          <option value="svg">SVG (with filters)</option>
+          <option value="cleanedSvg">SVG (cleaned)</option>
+        </select>
         <button onClick={toggleBoardState}>
           Switch to {boardState === "flat" ? "Slope" : "Flat"}
         </button>
@@ -58,15 +63,17 @@ function App() {
         variants={gridBoardVariants}
         animate={boardState}
       >
-        {Array.from({ length: 10 }).map((_, index) => (
+        {Array.from({ length: 20 }).map((_, index) => (
           <div key={index} className="board-grid">
-            {boardFormat === "svg" ? (
-              <MobileBoardGridSVG />
-            ) : (
+            {boardFormat === "webp" ? (
               <img
                 src={boardGridWebp}
                 alt={`Roulette Board Grid ${index + 1}`}
               />
+            ) : boardFormat === "svg" ? (
+              <MobileBoardGridSVG />
+            ) : (
+              <MobileBoardGridSVGFeCleaned />
             )}
           </div>
         ))}
