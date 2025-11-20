@@ -5,4 +5,8 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   base: "/roulette-board-tilt-test/",
+  build: {
+    minify: false,
+    cssMinify: false,
+  },
 });

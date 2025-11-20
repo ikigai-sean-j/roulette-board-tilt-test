@@ -63,7 +63,7 @@ function App() {
         variants={gridBoardVariants}
         animate={boardState}
       >
-        {Array.from({ length: 20 }).map((_, index) => (
+        {Array.from({ length: 50 }).map((_, index) => (
           <div key={index} className="board-grid">
             {boardFormat === "webp" ? (
               <img
